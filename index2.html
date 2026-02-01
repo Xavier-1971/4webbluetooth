@@ -97,7 +97,7 @@ joystick.on('move', (evt, data) => {
     const force = Math.min(data.force, 1);
 
     const [r, g, b] = angleToRGB(angle);
-    const brightness = Math.floor(force * 100);
+    const brightness = Math.floor(Math.pow(force, 2) * 100);
 
     colorChar.writeValue(new Uint8Array([r, g, b]));
     brightChar.writeValue(new Uint8Array([brightness]));
